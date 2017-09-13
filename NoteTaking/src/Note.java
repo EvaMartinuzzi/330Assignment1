@@ -27,7 +27,17 @@ public class Note {
         }*/
     }
 
+    public void getNotesFromFiles() throws IOException {//open files and read them
+        Map<String,String> map = new HashMap<>();
+        for (int i = 0; i<filesForRead.size();i++) {
+            String filePath = filesForRead.get(i).toString();
+            String fileName = filesForRead.get(i).getName();
+            String content = new String(Files.readAllBytes(Paths.get(filePath)));//throws IOException
 
+            map.put(fileName,content);
+        }
+        System.out.println(map.size());
+    }
 
 }
 

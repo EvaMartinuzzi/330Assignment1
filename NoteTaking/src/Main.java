@@ -11,6 +11,6 @@ public class Main {
         String path = scanner.nextLine();
         scanner.close();
         note.readFiles(path);
-
+        note.getNotesFromFiles();
     }
 }
