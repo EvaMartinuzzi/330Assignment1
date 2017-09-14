@@ -14,47 +14,52 @@ public class Main {
         note.getNotesFromFiles();
 
         System.out.println("Please select how you want to view your notes: ");
-        System.out.println(  "A. Display all notes with mentions (ex: @, #)" +
-                           "\nB. Display all notes, organized by mention (ex @, #" +
-                           "\nC. Display all searched keywords" +
-                           "\nD. Search notes for a keyword as plaintext and mention" +
-                           "\nE. Search all notes for keyword" +
-                           "\nF. Search all notes for keyword as a mention" +
-                           "\nG. Dispaly all notes by occurence of search word");
-        Scanner scanner = new Scanner(System.in);
-        scanner.toLowerCase();
-        String sortChoice = scanner.nextLine();
+        System.out.println("A. Display all notes with mentions (ex: @, #)" +
+                "\nB. Display all notes, organized by mention (ex @, #" +
+                "\nC. Display all searched keywords" +
+                "\nD. Search notes for a keyword as plaintext and mention" +
+                "\nE. Search all notes for keyword" +
+                "\nF. Search all notes for keyword as a mention" +
+                "\nG. Dispaly all notes by occurence of search word");
+        Scanner scanner1 = new Scanner(System.in);
+        String sortChoice = scanner1.nextLine();
+        sortChoice.toLowerCase();
         scanner.close();
 
-        if (sortChoice=="a"){
+        if (sortChoice == "a") {
             //show all notes with mentions
         }
-        if (sortChoice=="b"){
+        if (sortChoice == "b") {
             //show all notes organized by mention
         }
-        if (sortChoice=="c"){
+        if (sortChoice == "c") {
             //show all searched keywords
         }
 
-        switch (sortChoice){
-            case 2:  sortChoice = "d";
+        switch (sortChoice) {
+            case "A":
+                sortChoice = "d";
                 search(sortChoice);
                 break;
-            case 3:  sortChoice = "e";
+            case "B":
+                sortChoice = "e";
                 search(sortChoice);
                 break;
-            case 4:  sortChoice = "f";
+            case "C":
+                sortChoice = "f";
                 search(sortChoice);
                 break;
-            case 5:  sortChoice = "g";
+            case "D":
+                sortChoice = "g";
                 search(sortChoice);
                 break;
         }
+    }
 
-        String search(String x){
+        private static void search(String x){
             System.out.println("Please enter the keyword you would like to search: ");
-            Scanner scanner = new Scanner(System.in);
-            String keyword = scanner.nextLine();
+            Scanner scanner2 = new Scanner(System.in);
+            String keyword = scanner2.nextLine();
             if (x=="e"){
                 //search just as keyword
             }
@@ -66,4 +71,4 @@ public class Main {
             }
         }
     }
-}
+
