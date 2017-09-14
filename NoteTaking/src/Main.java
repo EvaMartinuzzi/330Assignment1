@@ -37,17 +37,17 @@ public class Main {
         }
 
         switch (sortChoice){
-            case 2:  monthString = "d";
-                search(monthString);
+            case 2:  sortChoice = "d";
+                search(sortChoice);
                 break;
-            case 3:  monthString = "e";
-                search(monthString);
+            case 3:  sortChoice = "e";
+                search(sortChoice);
                 break;
-            case 4:  monthString = "f";
-                search(monthString);
+            case 4:  sortChoice = "f";
+                search(sortChoice);
                 break;
-            case 5:  monthString = "g";
-                search(monthString);
+            case 5:  sortChoice = "g";
+                search(sortChoice);
                 break;
         }
 
