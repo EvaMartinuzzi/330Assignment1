@@ -3,23 +3,26 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Search {
 
-    public static void searchBy(String x){
-        System.out.println("Please enter the keyword you would like to search: ");
-        Scanner scanner2 = new Scanner(System.in);
-        String keyword = scanner2.nextLine();
-        if (x=="e"){
-            //search just as keyword
-        }
-        else if (x=="f"){
-            //search as a mention
-        }
-        else if (x=="g"){
-            //sort by occurence of search word
+    public void searchBy(String keyword,String key){
+        if(key.equalsIgnoreCase("a")){
+            Pattern p = Pattern.compile("[^a-z]");
+            Matcher m = p.matcher(keyword);
+            if (m.find()) {
+                switch (m.group(0)) {
+                    case "@":
+                        System.out.println("IT WORKS");
+                        break;
+                    case "!":
+                        break;
+                    case "#":
+                        break;
+                }
+            }
         }
     }
-
-
 }

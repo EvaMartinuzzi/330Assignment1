@@ -36,8 +36,6 @@ public class Note {
 
             map.put(fileName,content);
         }
-        System.out.println(map.size());
     }
-
 }
 

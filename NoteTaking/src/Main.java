@@ -10,7 +10,6 @@ public class Main {
         System.out.println("Please enter path to folder containing .txt files:");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
-        scanner.close();
         note.readFiles(path);
         note.getNotesFromFiles();
 
@@ -22,20 +21,14 @@ public class Main {
                 "\nE. Search all notes for keyword" +
                 "\nF. Search all notes for keyword as a mention" +
                 "\nG. Dispaly all notes by occurence of search word");
-        Scanner scanner1 = new Scanner(System.in);
-        String sortChoice = scanner1.nextLine();
+        String sortChoice = scanner.nextLine();
         sortChoice.toLowerCase();
-        scanner.close();
+        //ask for search terms
+        System.out.println(sortChoice);
+        System.out.println("What are you searching for?");
+        String keyword = scanner.nextLine();
+        search.searchBy(keyword,sortChoice);
 
-        if (sortChoice == "a") {
-        }
-        if (sortChoice == "b") {
-        }
-        if (sortChoice == "c") {
-        }
-        else {
-            search.searchBy(sortChoice);
-        }
     }
 }
 
