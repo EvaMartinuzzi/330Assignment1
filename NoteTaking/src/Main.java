@@ -28,13 +28,10 @@ public class Main {
         scanner.close();
 
         if (sortChoice == "a") {
-            //show all notes with mentions
         }
         if (sortChoice == "b") {
-            //show all notes organized by mention
         }
         if (sortChoice == "c") {
-            //show all searched keywords
         }
         else {
             search.searchBy(sortChoice);
