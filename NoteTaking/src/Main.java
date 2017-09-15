@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String args[]) throws IOException {
         Note note = new Note();
+        Search search = new Search();
 
         /*Asks for path to folder that contains file*/
         System.out.println("Please enter path to folder containing .txt files:");
@@ -27,48 +28,14 @@ public class Main {
         scanner.close();
 
         if (sortChoice == "a") {
-            //show all notes with mentions
         }
         if (sortChoice == "b") {
-            //show all notes organized by mention
         }
         if (sortChoice == "c") {
-            //show all searched keywords
         }
-
-        switch (sortChoice) {
-            case "A":
-                sortChoice = "d";
-                search(sortChoice);
-                break;
-            case "B":
-                sortChoice = "e";
-                search(sortChoice);
-                break;
-            case "C":
-                sortChoice = "f";
-                search(sortChoice);
-                break;
-            case "D":
-                sortChoice = "g";
-                search(sortChoice);
-                break;
+        else {
+            search.searchBy(sortChoice);
         }
     }
-
-        private static void search(String x){
-            System.out.println("Please enter the keyword you would like to search: ");
-            Scanner scanner2 = new Scanner(System.in);
-            String keyword = scanner2.nextLine();
-            if (x=="e"){
-                //search just as keyword
-            }
-            else if (x=="f"){
-                //search as a mention
-            }
-            else if (x=="g"){
-                //sort by occurence of search word
-            }
-        }
-    }
+}
 
