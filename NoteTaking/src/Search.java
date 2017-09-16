@@ -25,4 +25,8 @@ public class Search {
             }
         }
     }
+
+    public void display(String choice){
+        System.out.println("display");
+    }
 }

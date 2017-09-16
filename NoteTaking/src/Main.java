@@ -23,12 +23,16 @@ public class Main {
                 "\nG. Dispaly all notes by occurence of search word");
         String sortChoice = scanner.nextLine();
         sortChoice.toLowerCase();
-        //ask for search terms
-        System.out.println(sortChoice);
-        System.out.println("What are you searching for?");
-        String keyword = scanner.nextLine();
-        search.searchBy(keyword,sortChoice);
 
+        //ask for search terms
+        if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")){
+            search.display(sortChoice);
+        }
+        else {
+            System.out.println("What are you searching for?");
+            String keyword = scanner.nextLine();
+            search.searchBy(keyword, sortChoice);
+        }
     }
 }
 
