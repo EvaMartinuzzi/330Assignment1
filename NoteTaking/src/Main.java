@@ -1,8 +1,15 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args)throws IOException {
+        List<String> keywordArray = new ArrayList<String>();
+        options(keywordArray);
+    }
+
+    public static void options(List<String> keywordArray) throws IOException{
         Note note = new Note();
         Search search = new Search();
 
@@ -20,18 +27,24 @@ public class Main {
                 "\nD. Search notes for a keyword as plaintext and mention" +
                 "\nE. Search all notes for keyword" +
                 "\nF. Search all notes for keyword as a mention" +
-                "\nG. Dispaly all notes by occurence of search word");
+                "\nG. Dispaly all notes by occurence of search word"+
+                "\nH. Exit");
         String sortChoice = scanner.nextLine();
         sortChoice.toLowerCase();
 
         //ask for search terms
-        if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")){
-            search.display(sortChoice);
+        if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")) {
+            String keyword = "";
+            search.searchBy(keyword, sortChoice, keywordArray);
+        }
+        else if (sortChoice.equals("h")){
+            System.exit(1);
         }
         else {
             System.out.println("What are you searching for?");
             String keyword = scanner.nextLine();
-            search.searchBy(keyword, sortChoice);
+            keywordArray.add(keyword);
+            search.searchBy(keyword, sortChoice, keywordArray);
         }
     }
 }
