@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd1e683c-3459-4012-ae38-158e5755ccea" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/330Assignment1/Note.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NoteTaking/src/Note.java" afterPath="$PROJECT_DIR$/NoteTaking/src/Note.java" />
-    </list>
+    <list default="true" id="bd1e683c-3459-4012-ae38-158e5755ccea" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -248,12 +244,12 @@
       <workItem from="1505416437282" duration="820000" />
       <workItem from="1505499832018" duration="2885000" />
       <workItem from="1505510790895" duration="2181000" />
-      <workItem from="1505670322229" duration="4165000" />
+      <workItem from="1505670322229" duration="4659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14031000" />
+    <option name="totallyTimeSpent" value="14525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
