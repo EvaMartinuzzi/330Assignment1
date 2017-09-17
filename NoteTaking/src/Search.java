@@ -9,22 +9,21 @@ import java.util.regex.Pattern;
 
 public class Search {
     Main main = new Main();
+    Note note = new Note();
+
+    public void setMap() throws IOException {
+        note.readFiles(main.path);
+        note.getNotesFromFiles();
+    }
     public void searchBy(String keyword,String key, List<String> keywordArray) throws IOException {
         if (key.equalsIgnoreCase("a")) {
             //display all notes with mentions
-            Pattern p = Pattern.compile("[^a-z]");
-            Matcher m = p.matcher(keyword);
-            if (m.find()) {
-                switch (m.group(0)) {
-                    case "@":
-                        System.out.println("IT WORKS");
-                        break;
-                    case "!":
-                        break;
-                    case "#":
-                        break;
-                }
-            }
+            System.out.println("These files contain mentions: \n");
+            note.iterateMap("@");
+            note.iterateMap("#");
+            note.iterateMap("!");
+            note.iterateMap("^");
+
         }
 
         if (key.equalsIgnoreCase("b")) {
@@ -46,6 +45,7 @@ public class Search {
         }
         if (key.equalsIgnoreCase("c")) {
             //display every item in keywordArray
+            System.out.println("HELLo");
         }
 
         if (key.equalsIgnoreCase("d")) {
@@ -64,6 +64,6 @@ public class Search {
                 //topological sort
         }
 
-            Main.options(keywordArray);
+            main.options(keywordArray);
         }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    static String path;
     public static void main(String[] args)throws IOException {
         List<String> keywordArray = new ArrayList<String>();
         options(keywordArray);
@@ -16,9 +17,9 @@ public class Main {
         /*Asks for path to folder that contains file*/
         System.out.println("Please enter path to folder containing .txt files:");
         Scanner scanner = new Scanner(System.in);
-        String path = scanner.nextLine();
-        note.readFiles(path);
-        note.getNotesFromFiles();
+        path = scanner.nextLine();
+        //note.readFiles(path);
+        //note.getNotesFromFiles();
 
         System.out.println("\nPlease select how you want to view your notes: ");
         System.out.println("A. Display all notes with mentions (ex: @, #)" +
@@ -34,13 +35,16 @@ public class Main {
 
         //ask for search terms
         if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")) {
-            String keyword = scanner.nextLine();
+            //String keyword = scanner.nextLine();
+            String keyword = "";
+            search.setMap();
             search.searchBy(keyword, sortChoice, keywordArray);
         }
         else if (sortChoice.equals("h")){
             System.exit(1);
         }
         else {
+            search.setMap();
             System.out.println("What are you searching for?");
             String keyword = scanner.nextLine();
             keywordArray.add(keyword);

@@ -11,6 +11,7 @@ import java.util.Vector;
 
 public class Note {
     Vector<File> filesForRead = new Vector<>();
+    Map<String,String> map = new HashMap<>();
 
     public void readFiles(String path){
         /*stores file names in vector. Only allows for .txt files*/
@@ -22,16 +23,11 @@ public class Note {
                 filesForRead.add(file);
             }
         }
-        //for testing purposes
-        /*for(File file : filesForRead){
-            if(file.isFile()){
-                System.out.println(file.getName());
-            }
-        }*/
     }
 
     public void getNotesFromFiles() throws IOException {//open files and read them
-        Map<String,String> map = new HashMap<>();
+
+
         String[] fileNames= new String[filesForRead.size()];
 
         for (int i = 0; i<filesForRead.size();i++) {
@@ -51,6 +47,19 @@ public class Note {
             String fileContent = contents.toString();
 
             map.put(fileName,fileContent);
+        }
+
+
+    }
+
+    public void iterateMap(String searchValue){
+        for(Map.Entry<String,String> entry : map.entrySet()){
+            String value = entry.getValue();
+            String key = entry.getKey();
+
+            if(value.contains(searchValue)){
+                System.out.println(key);
+            }
         }
     }
 }
