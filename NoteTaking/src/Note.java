@@ -1,9 +1,12 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Vector;
 
 public class Note {
@@ -30,11 +33,21 @@ public class Note {
     public void getNotesFromFiles() throws IOException {//open files and read them
         Map<String,String> map = new HashMap<>();
         for (int i = 0; i<filesForRead.size();i++) {
-            String filePath = filesForRead.get(i).toString();
             String fileName = filesForRead.get(i).getName();
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));//throws IOException
+            String filePath = filesForRead.get(i).getPath();
 
-            map.put(fileName,content);
+            StringBuffer buffer = new StringBuffer();
+            BufferedReader reader = new BufferedReader(
+                    new FileReader(filePath));
+            char[] ch = new char[9000000];
+            int n = 0;
+            while ((n = reader.read(ch)) != -1) {
+                buffer.append(ch, 0, n);
+            }
+            reader.close();
+            String fileContent = buffer.toString();
+
+            map.put(fileName,fileContent);
         }
     }
 }
