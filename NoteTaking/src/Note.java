@@ -32,9 +32,12 @@ public class Note {
 
     public void getNotesFromFiles() throws IOException {//open files and read them
         Map<String,String> map = new HashMap<>();
+        String[] fileNames= new String[filesForRead.size()];
+
         for (int i = 0; i<filesForRead.size();i++) {
             String fileName = filesForRead.get(i).getName();
             String filePath = filesForRead.get(i).getPath();
+            fileNames[i] = filesForRead.get(i).getName();
 
             StringBuffer buffer = new StringBuffer();
             BufferedReader reader = new BufferedReader(
