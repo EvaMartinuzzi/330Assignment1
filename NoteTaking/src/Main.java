@@ -20,7 +20,7 @@ public class Main {
         note.readFiles(path);
         note.getNotesFromFiles();
 
-        System.out.println("Please select how you want to view your notes: ");
+        System.out.println("\nPlease select how you want to view your notes: ");
         System.out.println("A. Display all notes with mentions (ex: @, #)" +
                 "\nB. Display all notes, organized by mention (ex @, #" +
                 "\nC. Display all searched keywords" +

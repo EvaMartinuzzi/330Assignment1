@@ -39,16 +39,16 @@ public class Note {
             String filePath = filesForRead.get(i).getPath();
             fileNames[i] = filesForRead.get(i).getName();
 
-            StringBuffer buffer = new StringBuffer();
+            StringBuffer contents = new StringBuffer();
             BufferedReader reader = new BufferedReader(
                     new FileReader(filePath));
             char[] ch = new char[9000000];
             int n = 0;
             while ((n = reader.read(ch)) != -1) {
-                buffer.append(ch, 0, n);
+                contents.append(ch, 0, n);
             }
             reader.close();
-            String fileContent = buffer.toString();
+            String fileContent = contents.toString();
 
             map.put(fileName,fileContent);
         }
