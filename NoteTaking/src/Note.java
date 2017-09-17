@@ -61,6 +61,7 @@ public class Note {
                 System.out.println(key);
             }
         }
+        System.out.println("");
     }
 }
 

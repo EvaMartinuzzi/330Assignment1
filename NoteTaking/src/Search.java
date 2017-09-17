@@ -28,19 +28,15 @@ public class Search {
 
         if (key.equalsIgnoreCase("b")) {
             //display all notes organized by mention
-            Pattern p = Pattern.compile("[^a-z]");
-            Matcher m = p.matcher(keyword);
-            if (m.find()) {
-                switch (m.group(0)) {
-                    case "@":
-                        System.out.println("IT WORKS");
-                        break;
-                    case "!":
-                        break;
-                    case "#":
-                        break;
-                }
-            }
+            System.out.println("These files contain @ mentions: \n");
+            note.iterateMap("@");
+            System.out.println("These files contain # mentions: \n");
+            note.iterateMap("#");
+            System.out.println("These files contain ! mentions: \n");
+            note.iterateMap("!");
+            System.out.println("These files contain ^ mentions: \n");
+            note.iterateMap("^");
+
             //display @ then # then ! then ^ then .com
         }
         if (key.equalsIgnoreCase("c")) {
