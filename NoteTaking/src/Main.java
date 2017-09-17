@@ -34,12 +34,17 @@ public class Main {
 
         //ask for search terms
         if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")) {
-            System.out.println("What are you searching for?");
             String keyword = scanner.nextLine();
             search.searchBy(keyword, sortChoice, keywordArray);
         }
         else if (sortChoice.equals("h")){
             System.exit(1);
+        }
+        else {
+            System.out.println("What are you searching for?");
+            String keyword = scanner.nextLine();
+            keywordArray.add(keyword);
+            search.searchBy(keyword, sortChoice, keywordArray);
         }
     }
 }
