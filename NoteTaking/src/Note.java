@@ -11,6 +11,7 @@ import java.util.Vector;
 
 public class Note {
     Vector<File> filesForRead = new Vector<>();
+    Vector<String> filesToPrint = new Vector<>();
     Map<String,String> map = new HashMap<>();
 
     public void readFiles(String path){
@@ -52,16 +53,25 @@ public class Note {
 
     }
 
-    public void iterateMap(String searchValue){
+    public void iterateMap(String searchValue){//goes through map with search value
+
         for(Map.Entry<String,String> entry : map.entrySet()){
             String value = entry.getValue();
             String key = entry.getKey();
 
             if(value.contains(searchValue)){
-                System.out.println(key);
+                if(filesToPrint.contains(key)){
+                    continue;
+                }else{
+                    filesToPrint.add(key);
+                }
             }
         }
-        System.out.println("");
+    }
+    public void printFilesToPrint(){
+        for(String key : filesToPrint){
+            System.out.println(key);
+        }
     }
 }
 

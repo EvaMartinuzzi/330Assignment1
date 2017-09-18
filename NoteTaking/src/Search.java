@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,19 +24,39 @@ public class Search {
             note.iterateMap("#");
             note.iterateMap("!");
             note.iterateMap("^");
-
+            note.printFilesToPrint();
         }
 
         if (key.equalsIgnoreCase("b")) {
             //display all notes organized by mention
-            System.out.println("These files contain @ mentions: \n");
+            System.out.println("\nThese files contain @ mentions: \n");
             note.iterateMap("@");
-            System.out.println("These files contain # mentions: \n");
+            note.printFilesToPrint();
+            note.filesToPrint.clear();
+
+            System.out.println("\nThese files contain # mentions: \n");
             note.iterateMap("#");
-            System.out.println("These files contain ! mentions: \n");
+            note.printFilesToPrint();
+            note.filesToPrint.clear();
+
+            System.out.println("\nThese files contain ! mentions: \n");
             note.iterateMap("!");
-            System.out.println("These files contain ^ mentions: \n");
+            note.printFilesToPrint();
+            note.filesToPrint.clear();
+
+            System.out.println("\nThese files contain ^ mentions: \n");
             note.iterateMap("^");
+            note.printFilesToPrint();
+            note.filesToPrint.clear();
+
+            System.out.println("\nThese files contain URL mentions: \n");
+            note.iterateMap(".com");
+            note.iterateMap(".org");
+            note.iterateMap(".net");
+            note.iterateMap(".edu");
+            note.printFilesToPrint();
+            note.filesToPrint.clear();
+
 
             //display @ then # then ! then ^ then .com
         }
