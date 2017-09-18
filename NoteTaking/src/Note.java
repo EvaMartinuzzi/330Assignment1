@@ -53,7 +53,7 @@ public class Note {
 
     }
 
-    public void iterateMap(String searchValue){//goes through map with search value
+    public void iterateMapSearch(String searchValue){//goes through map with search value
 
         for(Map.Entry<String,String> entry : map.entrySet()){
             String value = entry.getValue();
@@ -73,5 +73,7 @@ public class Note {
             System.out.println(key);
         }
     }
+
+
 }
 
