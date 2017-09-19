@@ -20,71 +20,38 @@ public class Search {
         note.readFiles(main.path);
         note.getNotesFromFiles();
     }
-    public void searchBy(String keyword,String key, List<String> keywordArray) throws IOException {
+    public void searchBy(String key, List<String> keywordArray) throws IOException {
         if (key.equalsIgnoreCase("a")) {
             //display all notes with mentions
             System.out.println("These files contain mentions: \n");
             note.iterateMapSearch("@");
-            note.iterateMapSearch("#");
-            note.iterateMapSearch("!");
-            note.iterateMapSearch("^");
             note.printFilesToPrint();
+            System.out.println();
         }
 
         if (key.equalsIgnoreCase("b")) {
             //display all notes organized by mention
-            System.out.println("\nThese files contain @ mentions: \n");
+
+            System.out.println("\nThese files contain mentions: \n");
             note.iterateMapSearch("@");
-            note.printFilesToPrint();
+            note.printFilesToPrintSorted();
             note.filesToPrint.clear();
-
-            System.out.println("\nThese files contain # mentions: \n");
-            note.iterateMapSearch("#");
-            note.printFilesToPrint();
-            note.filesToPrint.clear();
-
-            System.out.println("\nThese files contain ! mentions: \n");
-            note.iterateMapSearch("!");
-            note.printFilesToPrint();
-            note.filesToPrint.clear();
-
-            System.out.println("\nThese files contain ^ mentions: \n");
-            note.iterateMapSearch("^");
-            note.printFilesToPrint();
-            note.filesToPrint.clear();
-
-            System.out.println("\nThese files contain URL mentions: \n");
-            note.iterateMapSearch(".com");
-            note.iterateMapSearch(".org");
-            note.iterateMapSearch(".net");
-            note.iterateMapSearch(".edu");
-            note.printFilesToPrint();
-            note.filesToPrint.clear();
-
-
-            //display @ then # then ! then ^ then .com
+            System.out.println();
         }
+
         if (key.equalsIgnoreCase("c")) {
-            //display every item in keywordArray
-            System.out.println("These are the keywords you have searched for: ");
-            for(String keywords : keywordArray){
-                System.out.println(keywords);
-            }
+            //display all important words within all notes
         }
 
         if (key.equalsIgnoreCase("d")) {
-            //search all notes for keyword as both keyword and mention
+            //report all notes organized by frequently used words
         }
 
         if (key.equalsIgnoreCase("e")) {
-                //search all notes for keyword
-                //search if it contains keyword
-        }
-
-        if (key.equalsIgnoreCase("f")) {
-                //search all notes for keyword as mention
-                //search for exactly what you type
-            Pattern p = Pattern.compile(".*\\b"+keyword+"\\b.*");//searches for whole word
+            //report all notes that contain a searched frequently used word or @
+            System.out.println("Please enter a person or keyword you would like to search for: ");
+            String searchValue = scanner.nextLine();
+            Pattern p = Pattern.compile(".*\\b"+searchValue+"\\b.*");//searches for whole word
             for(Map.Entry<String,String> entry :note.map.entrySet()) {
                 String input = entry.getValue();
                 Matcher m = p.matcher(input);
@@ -93,10 +60,14 @@ public class Search {
                 }
             }
             note.printFilesToPrint();
+            System.out.println();
         }
 
-        if (key.equalsIgnoreCase("g")) {
+
+        if (key.equalsIgnoreCase("f")) {
                 //topological sort
+            System.out.println();
+
         }
 
             main.options(keywordArray);

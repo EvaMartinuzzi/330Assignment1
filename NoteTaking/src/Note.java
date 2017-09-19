@@ -1,18 +1,16 @@
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 
 public class Note {
     Vector<File> filesForRead = new Vector<>();
     Vector<String> filesToPrint = new Vector<>();
     Map<String,String> map = new HashMap<>();
+    Vector<String> filesList = new Vector<>();
 
     public void readFiles(String path){
         /*stores file names in vector. Only allows for .txt files*/
@@ -70,6 +68,16 @@ public class Note {
     }
     public void printFilesToPrint(){
         for(String key : filesToPrint){
+            System.out.println(key);
+        }
+    }
+
+    public void printFilesToPrintSorted(){
+        for(String key : filesToPrint){
+            filesList.add(key);
+        }
+        java.util.Collections.sort(filesList, String.CASE_INSENSITIVE_ORDER);
+        for(String key : filesList){
             System.out.println(key);
         }
     }

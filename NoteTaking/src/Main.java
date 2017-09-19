@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 public class Main {
     static String path;
-    public static void main(String[] args)throws IOException {
+
+    public static void main(String[] args) throws IOException {
         List<String> keywordArray = new ArrayList<String>();
         options(keywordArray);
     }
 
-    public static void options(List<String> keywordArray) throws IOException{
+    public static void options(List<String> keywordArray) throws IOException {
         Note note = new Note();
         Search search = new Search();
 
@@ -21,34 +22,24 @@ public class Main {
         //note.readFiles(path);
         //note.getNotesFromFiles();
 
-        System.out.println("\nPlease select how you want to view your notes: ");
+        System.out.println("Please select how you want to view your notes: ");
         System.out.println("A. Display all notes with mentions (ex: @, #)" +
-                "\nB. Display all notes, organized by mention (ex @, #" +
-                "\nC. Display all searched keywords" +
-                "\nD. Search notes for a keyword as plaintext and mention" +
-                "\nE. Search all notes for keyword" +
-                "\nF. Search all notes for keyword as a mention" +
-                "\nG. Dispaly all notes by occurence of search word"+
-                "\nH. Exit");
+                "\nB. Display all notes, organized by mention" +
+                "\nC. Display all notes and their keywords" +
+                "\nD. Display all notes, organized by keyword" +
+                "\nE. Search all notes for a mention or a keyword" +
+                "\nF. Dispaly all notes by number of references to other notes" +
+                "\nG. Exit");
         String sortChoice = scanner.nextLine();
         sortChoice = sortChoice.toLowerCase();
 
         //ask for search terms
-        if (sortChoice.equals("a") || sortChoice.equals("b") || sortChoice.equals("c")) {
-            //String keyword = scanner.nextLine();
+        if (sortChoice.equals("g")) {
+            System.exit(1);
+        } else {
             String keyword = "";
             search.setMap();
-            search.searchBy(keyword, sortChoice, keywordArray);
-        }
-        else if (sortChoice.equals("h")){
-            System.exit(1);
-        }
-        else {
-            search.setMap();
-            System.out.println("What are you searching for?");
-            String keyword = scanner.nextLine();
-            keywordArray.add(keyword);
-            search.searchBy(keyword, sortChoice, keywordArray);
+            search.searchBy(sortChoice, keywordArray);
         }
     }
 }
