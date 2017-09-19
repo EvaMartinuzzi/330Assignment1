@@ -19,8 +19,6 @@ public class Main {
         System.out.println("Please enter path to folder containing .txt files:");
         Scanner scanner = new Scanner(System.in);
         path = scanner.nextLine();
-        //note.readFiles(path);
-        //note.getNotesFromFiles();
 
         System.out.println("Please select how you want to view your notes: ");
         System.out.println("A. Display all notes with mentions (ex: @, #)" +
@@ -33,7 +31,7 @@ public class Main {
         String sortChoice = scanner.nextLine();
         sortChoice = sortChoice.toLowerCase();
 
-        //ask for search terms
+        //either exits or brings user to their report
         if (sortChoice.equals("g")) {
             System.exit(1);
         } else {

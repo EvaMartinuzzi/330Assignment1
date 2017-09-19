@@ -15,11 +15,12 @@ public class Search {
     Scanner scanner = new Scanner(System.in);
 
 
-
+    //reads files into map
     public void setMap() throws IOException {
         note.readFiles(main.path);
         note.getNotesFromFiles();
     }
+
     public void searchBy(String key, List<String> keywordArray) throws IOException {
         if (key.equalsIgnoreCase("a")) {
             //display all notes with mentions
@@ -40,6 +41,8 @@ public class Search {
         }
 
         if (key.equalsIgnoreCase("c")) {
+            note.iterateMapSearch("");
+            note.generateKeywords();
             //display all important words within all notes
         }
 

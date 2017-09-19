@@ -9,6 +9,7 @@ import java.util.*;
 public class Note {
     Vector<File> filesForRead = new Vector<>();
     Vector<String> filesToPrint = new Vector<>();
+    Vector<String> keywords = new Vector<>();
     Map<String,String> map = new HashMap<>();
     Vector<String> filesList = new Vector<>();
 
@@ -66,13 +67,13 @@ public class Note {
             }
         }
     }
-    public void printFilesToPrint(){
+    public void printFilesToPrint(){ //prints files containing mentions
         for(String key : filesToPrint){
             System.out.println(key);
         }
     }
 
-    public void printFilesToPrintSorted(){
+    public void printFilesToPrintSorted(){ //prints files containing mentions in alphabetical order
         for(String key : filesToPrint){
             filesList.add(key);
         }
@@ -82,6 +83,23 @@ public class Note {
         }
     }
 
+    public void generateKeywords(){ //generates a unique list of keywords for a file
+        //these are just a test
 
+        for(String key : filesToPrint) {
+            int totalWordCount = 0;
+            int threshold;
+            int wordAppearance = 0;
+            String word = "hello";
+            //get word count of file
+            threshold = (totalWordCount/4);
+            if (wordAppearance>=threshold){
+                keywords.add(word);
+            }
+            System.out.println("FILE:   " + key + "     KEYWORDS:   " + keywords);
+            System.out.println();
+            keywords.clear();
+        }
+    }
 }
 
