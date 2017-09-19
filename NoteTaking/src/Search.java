@@ -21,7 +21,7 @@ public class Search {
         note.getNotesFromFiles();
     }
 
-    public void searchBy(String key, List<String> keywordArray) throws IOException {
+    public void searchBy(String key) throws IOException {
         if (key.equalsIgnoreCase("a")) {
             //display all notes with mentions
             System.out.println("These files contain mentions: \n");
@@ -74,7 +74,5 @@ public class Search {
             System.out.println();
 
         }
-
-            main.options(keywordArray);
         }
 }

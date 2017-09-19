@@ -17,9 +17,11 @@ public class Main {
 
         /*Asks for path to folder that contains file*/
         System.out.println("Please enter path to folder containing .txt files:");
+        System.out.println("    Example: C:\\Users\\Name\\Documents\\NotesFolder");
         Scanner scanner = new Scanner(System.in);
         path = scanner.nextLine();
 
+        System.out.println();
         System.out.println("Please select how you want to view your notes: ");
         System.out.println("A. Display all notes with mentions (ex: @, #)" +
                 "\nB. Display all notes, organized by mention" +
@@ -37,7 +39,7 @@ public class Main {
         } else {
             String keyword = "";
             search.setMap();
-            search.searchBy(sortChoice, keywordArray);
+            search.searchBy(sortChoice);
         }
     }
 }
