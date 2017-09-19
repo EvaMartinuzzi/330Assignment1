@@ -2,6 +2,9 @@
 
 This assignment allows the user to store several text files in memory and then search them for keywords or special characters.
 
+To run:
+  Clone into IntelliJ (or other IDE) and click the Run button
+
 Trello site used for tracking progres of tasks:
 https://trello.com/b/YNYWMGDx/330-assignment-1
 
