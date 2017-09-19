@@ -1,9 +1,7 @@
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Note {
@@ -33,7 +31,6 @@ public class Note {
         for (int i = 0; i<filesForRead.size();i++) {
             String fileName = filesForRead.get(i).getName();
             String filePath = filesForRead.get(i).getPath();
-            fileNames[i] = filesForRead.get(i).getName();
 
             StringBuffer contents = new StringBuffer();
             BufferedReader reader = new BufferedReader(
@@ -83,7 +80,7 @@ public class Note {
         }
     }
 
-    public void generateKeywords(){ //generates a unique list of keywords for a file
+    public void generateKeywords() throws IOException{ //generates a unique list of keywords for a file
         //these are just a test
 
         for(String key : filesToPrint) {
@@ -91,11 +88,43 @@ public class Note {
             int threshold;
             int wordAppearance = 0;
             String word = "hello";
+            //words into a map:  key is word, value is wordAppearance
             //get word count of file
+            //get appearance of each word
+
             threshold = (totalWordCount/4);
             if (wordAppearance>=threshold){
                 keywords.add(word);
             }
+            System.out.println("FILE:   " + key + "     KEYWORDS:   " + keywords);
+            System.out.println();
+            keywords.clear();
+        }
+    }
+
+    public void generateKeywordsSorted() throws IOException{ //generates a unique list of keywords for a file
+        //these are just a test
+
+        for(String key : filesToPrint) {
+            int totalWordCount = 0;
+            int threshold;
+            int wordAppearance = 0;
+            String word = "hello";
+
+            keywords.add("apple");
+            keywords.add("crab");
+            keywords.add("banana");
+
+            //words into a map:  key is word, value is wordAppearance
+            //get word count of file
+            //get appearance of each word
+
+//            threshold = (totalWordCount/4);
+//            if (wordAppearance>=threshold){
+//                keywords.add(word);
+//            }
+            java.util.Collections.sort(keywords, String.CASE_INSENSITIVE_ORDER);
+
             System.out.println("FILE:   " + key + "     KEYWORDS:   " + keywords);
             System.out.println();
             keywords.clear();

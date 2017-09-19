@@ -41,13 +41,15 @@ public class Search {
         }
 
         if (key.equalsIgnoreCase("c")) {
+            //display all important words within all notes
             note.iterateMapSearch("");
             note.generateKeywords();
-            //display all important words within all notes
         }
 
         if (key.equalsIgnoreCase("d")) {
             //report all notes organized by frequently used words
+            note.iterateMapSearch("");
+            note.generateKeywordsSorted();
         }
 
         if (key.equalsIgnoreCase("e")) {
