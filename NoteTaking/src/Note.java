@@ -54,12 +54,17 @@ public class Note {
         for(Map.Entry<String,String> entry : map.entrySet()){
             String value = entry.getValue();
             String key = entry.getKey();
-
+            String mentionedWord = "";
             if(value.contains(searchValue)){
-                if(filesToPrint.contains(key)){
-                    continue;
-                }else{
-                    filesToPrint.add(key);
+                int searchIndex = value.indexOf(searchValue);
+                int prevIndex = value.indexOf(searchValue)-1;
+                char prevChar = value.charAt(prevIndex);
+                if(prevChar == ' ' || prevIndex == -1){
+                    if(filesToPrint.contains(key)){
+                        continue;
+                    }else{
+                        filesToPrint.add(key);
+                    }
                 }
             }
         }
