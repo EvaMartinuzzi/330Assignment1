@@ -1,4 +1,6 @@
+import com.sun.deploy.config.VerboseDefaultConfig;
 import com.sun.deploy.util.ArrayUtil;
+import sun.security.provider.certpath.Vertex;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,25 +42,87 @@ public class Search {
 
         if (key.equalsIgnoreCase("c")) {
             //display all important words within all notes
+            Vector<Integer> numbers = new Vector<>();
+            Vector<String> sortedCount = new Vector<>();
+            Vector<String> usedWords = new Vector<>();
             for(Map.Entry<String,String> entry : note.map.entrySet()){
                 String value = entry.getValue();
                 String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
 
 
                 List list = Arrays.asList(splitString);
-                Set<String> set = new HashSet<>(list);
+                Set<String> set = new LinkedHashSet<>(list);
                 for(String str : set){
-                    if(str.length()<2){
+                    if(str.length()<3){
                         continue;
                     }else {
-                        count.add(Collections.frequency(list, str) + "=" + str);
+                        count.add(Collections.frequency(list, str) + " = " + str);//counts number of occurrences
+                    }
+                    if(entry.getKey().toLowerCase().contains(str.toLowerCase())||str.contains("#")){//if word is also present in note title increase value
+                        int i =0;
+                        String number = "";
+                        while(Character.isDigit(count.lastElement().charAt(i))){//checks for double digits
+                            number += count.lastElement().charAt(i);
+                            i++;
+                        }
+                        int num = Integer.parseInt(number);
+                        num +=10;
+                        String oldString = count.lastElement();//replace string with new value
+                        String newString = Integer.toString(num) + oldString.substring(number.length());
+                        count.remove(count.size()-1);
+                        count.add(newString);
                     }
                 }
-                System.out.println(count);
-                Collections.sort(count);
+
+                for(String str : count){//adds word frequency to new vector to sort
+                    int i =0;
+                    String number = "";
+                    while(Character.isDigit(str.charAt(i))){//checks for double digit
+                        number += str.charAt(i);
+                        i++;
+                    }
+                    int num = Integer.parseInt(number);
+                    numbers.add(num);
+                }
+                Collections.sort(numbers);
+                Collections.reverse(numbers);
+
+                for(int num : numbers){//takes unsorted vector and sorts by first index which is number of occurrences
+                    for(String str: count){
+                        if(num >= 0) {
+                            if (str.contains(Integer.toString(num))) {
+                                if(str.indexOf(Integer.toString(num))==0) {
+                                    sortedCount.add(str);
+                                }
+                            }
+                        }
+                    }
+                }
+                Vector<String> noDuplicates = new Vector<>();
+                for(String str : sortedCount){//removes duplicates from sortedCount
+                    if(noDuplicates.contains(str)){
+                        continue;
+                    }else{
+                        noDuplicates.add(str);
+                    }
+                }
+
+                int i = 0;
+                while( i <=10){//displays the top 10 words
+                    if(i >= noDuplicates.size()){
+                        break;
+                    }else {
+                        System.out.println(noDuplicates.get(i));
+                        i++;
+                    }
+                }
+                //System.out.println(sortedCount);
                 System.out.println(entry.getKey());
-                System.out.println(count);
                 count.clear();
+                numbers.clear();
+                sortedCount.clear();
+                usedWords.clear();
+                noDuplicates.clear();
             }
 
             note.generateKeywords();
