@@ -44,6 +44,7 @@ public class Note {
             String fileContent = contents.toString();
 
             map.put(fileName,fileContent);
+
         }
 
 
@@ -56,14 +57,20 @@ public class Note {
             String key = entry.getKey();
             String mentionedWord = "";
             if(value.contains(searchValue)){
-                int searchIndex = value.indexOf(searchValue);
                 int prevIndex = value.indexOf(searchValue)-1;
                 char prevChar = value.charAt(prevIndex);
-                if(prevChar == ' ' || prevIndex == -1){
+                int currentIndex = value.indexOf(searchValue);
+                char currentChar = value.charAt(currentIndex);
+                while(currentChar != ' ' &&currentChar !='\n'){//looks for end of word or end of line
+                    mentionedWord += value.charAt(currentIndex);
+                    currentIndex++;
+                    currentChar = value.charAt(currentIndex);
+                }
+                if(prevChar == ' ' || prevIndex == -1){//prevents emails from being included
                     if(filesToPrint.contains(key)){
                         continue;
                     }else{
-                        filesToPrint.add(key);
+                        filesToPrint.add(key + ": " + mentionedWord);
                     }
                 }
             }

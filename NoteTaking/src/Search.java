@@ -32,7 +32,6 @@ public class Search {
 
         if (key.equalsIgnoreCase("b")) {
             //display all notes organized by mention
-
             System.out.println("\nThese files contain mentions: \n");
             note.iterateMapSearch("@");
             note.printFilesToPrintSorted();
@@ -56,7 +55,7 @@ public class Search {
             //report all notes that contain a searched frequently used word or @
             System.out.println("Please enter a person or keyword you would like to search for: ");
             String searchValue = scanner.nextLine();
-            Pattern p = Pattern.compile(searchValue,Pattern.CASE_INSENSITIVE);
+            Pattern p = Pattern.compile(searchValue,Pattern.CASE_INSENSITIVE);//search for value including mentions
             for(Map.Entry<String,String> entry :note.map.entrySet()) {
                 String input = entry.getValue();
                 Matcher m = p.matcher(input);
