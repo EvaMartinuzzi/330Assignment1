@@ -1,11 +1,10 @@
+import com.sun.deploy.util.ArrayUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +12,7 @@ public class Search {
     Main main = new Main();
     Note note = new Note();
     Scanner scanner = new Scanner(System.in);
-
+    Vector<String> count = new Vector<>();
 
     //reads files into map
     public void setMap() throws IOException {
@@ -41,7 +40,27 @@ public class Search {
 
         if (key.equalsIgnoreCase("c")) {
             //display all important words within all notes
-            note.iterateMapSearch("");
+            for(Map.Entry<String,String> entry : note.map.entrySet()){
+                String value = entry.getValue();
+                String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
+
+
+                List list = Arrays.asList(splitString);
+                Set<String> set = new HashSet<>(list);
+                for(String str : set){
+                    if(str.length()<2){
+                        continue;
+                    }else {
+                        count.add(Collections.frequency(list, str) + "=" + str);
+                    }
+                }
+                System.out.println(count);
+                Collections.sort(count);
+                System.out.println(entry.getKey());
+                System.out.println(count);
+                count.clear();
+            }
+
             note.generateKeywords();
         }
 

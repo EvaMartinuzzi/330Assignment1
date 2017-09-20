@@ -19,8 +19,8 @@ public class Main {
         System.out.println("Please enter path to folder containing .txt files:");
         System.out.println("    Example: C:\\Users\\Name\\Documents\\NotesFolder");
         Scanner scanner = new Scanner(System.in);
-        path = scanner.nextLine();
-        //path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
+        //path = scanner.nextLine();
+        path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
 
         System.out.println();
         System.out.println("Please select how you want to view your notes: ");

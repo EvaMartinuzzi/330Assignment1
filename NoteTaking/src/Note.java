@@ -9,7 +9,7 @@ public class Note {
     Vector<String> filesToPrint = new Vector<>();
     Vector<String> keywords = new Vector<>();
     Map<String,String> map = new HashMap<>();
-    Vector<String> filesList = new Vector<>();
+    Vector<String> mentionList = new Vector<>();
 
     public void readFiles(String path){
         /*stores file names in vector. Only allows for .txt files*/
@@ -61,7 +61,7 @@ public class Note {
                 char prevChar = value.charAt(prevIndex);
                 int currentIndex = value.indexOf(searchValue);
                 char currentChar = value.charAt(currentIndex);
-                while(currentChar != ' ' &&currentChar !='\n'){//looks for end of word or end of line
+                while(currentChar != ' ' && currentChar !='\n'){//looks for end of word or end of line
                     mentionedWord += value.charAt(currentIndex);
                     currentIndex++;
                     currentChar = value.charAt(currentIndex);
@@ -84,10 +84,10 @@ public class Note {
 
     public void printFilesToPrintSorted(){ //prints files containing mentions in alphabetical order
         for(String key : filesToPrint){
-            filesList.add(key);
+            mentionList.add(key);
         }
-        java.util.Collections.sort(filesList, String.CASE_INSENSITIVE_ORDER);
-        for(String key : filesList){
+        java.util.Collections.sort(mentionList, String.CASE_INSENSITIVE_ORDER);
+        for(String key : mentionList){
             System.out.println(key);
         }
     }
