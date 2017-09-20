@@ -106,6 +106,7 @@ public class Search {
                         noDuplicates.add(str);
                     }
                 }
+                System.out.println("\n"+entry.getKey()+ ":");
 
                 int i = 0;
                 while( i <=10){//displays the top 10 words
@@ -116,8 +117,6 @@ public class Search {
                         i++;
                     }
                 }
-                //System.out.println(sortedCount);
-                System.out.println(entry.getKey());
                 count.clear();
                 numbers.clear();
                 sortedCount.clear();
