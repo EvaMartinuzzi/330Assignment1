@@ -228,6 +228,7 @@ public class Search {
                 }
             }
             note.printFilesToPrint();
+            note.filesToPrint.clear();
             System.out.println();
             System.out.println("Would you like to search for another term? Y/N ");
             String searchAgain = scanner.nextLine();
