@@ -39,23 +39,114 @@ public class Search {
             System.out.println();
         }
 
+
         if (key.equalsIgnoreCase("c")) {
-            //display all important words within all notes
+            //displays all important words in each note
             Vector<Integer> numbers = new Vector<>();
             Vector<String> sortedCount = new Vector<>();
             Vector<String> usedWords = new Vector<>();
             for(Map.Entry<String,String> entry : note.map.entrySet()){
                 String value = entry.getValue();
                 String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
-
+                Set<String> commonWords = new HashSet<>(Arrays.asList("the", "and","that","have","for","not","with","this","but","from","will","would","there","their","what","out","about",
+                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For", "Not"));
 
                 List list = Arrays.asList(splitString);
                 Set<String> set = new LinkedHashSet<>(list);
-                for(String str : set){
-                    if(str.length()<3){
+                for(String str : set) {
+                    if (str.length() < 3) {
+                        continue;
+                    }else if(commonWords.contains(str)){
                         continue;
                     }else {
-                        Note.deleteCommonWords(str);
+                        count.add(Collections.frequency(list, str) + " = " + str);//counts number of occurrences
+                    }
+                    if(entry.getKey().toLowerCase().contains(str.toLowerCase())||str.contains("#")){//if word is also present in note title increase value
+                        int i =0;
+                        String number = "";
+                        while(Character.isDigit(count.lastElement().charAt(i))){//checks for double digits
+                            number += count.lastElement().charAt(i);
+                            i++;
+                        }
+                        int num = Integer.parseInt(number);
+                        num +=10;
+                        String oldString = count.lastElement();//replace string with new value
+                        String newString = Integer.toString(num) + oldString.substring(number.length());
+                        count.remove(count.size()-1);
+                        count.add(newString);
+                    }
+                }
+
+                for(String str : count){//adds word frequency to new vector to sort
+                    int i =0;
+                    String number = "";
+                    while(Character.isDigit(str.charAt(i))){//checks for double digit
+                        number += str.charAt(i);
+                        i++;
+                    }
+                    int num = Integer.parseInt(number);
+                    numbers.add(num);
+                }
+                Collections.sort(numbers);
+                Collections.reverse(numbers);
+
+                for(int num : numbers){//takes unsorted vector and sorts by first index which is number of occurrences
+                    for(String str: count){
+                        if(num >= 0) {
+                            if (str.contains(Integer.toString(num))) {
+                                if(str.indexOf(Integer.toString(num))==0) {
+                                    sortedCount.add(str);
+                                }
+                            }
+                        }
+                    }
+                }
+                Vector<String> noDuplicates = new Vector<>();
+                for(String str : sortedCount){//removes duplicates from sortedCount
+                    if(noDuplicates.contains(str)){
+                        continue;
+                    }else{
+                        noDuplicates.add(str);
+                    }
+                }
+                System.out.println("\n"+entry.getKey()+ ":");
+
+                int i = 0;
+                while( i <=10){//displays the top 10 words
+                    if(i >= noDuplicates.size()){
+                        break;
+                    }else {
+                        System.out.println(noDuplicates.get(i));
+                        i++;
+                    }
+                }
+                count.clear();
+                numbers.clear();
+                sortedCount.clear();
+                usedWords.clear();
+                noDuplicates.clear();
+            }
+        }
+
+        if (key.equalsIgnoreCase("d")) {
+            //report all notes organized by frequently used words
+            Vector<Integer> numbers = new Vector<>();
+            Vector<String> sortedCount = new Vector<>();
+            Vector<String> usedWords = new Vector<>();
+            for(Map.Entry<String,String> entry : note.map.entrySet()){
+                String value = entry.getValue();
+                String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
+                Set<String> commonWords = new HashSet<>(Arrays.asList("the", "and","that","have","for","not","with","this","but","from","will","would","there","their","what","out","about",
+                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For", "Not"));
+
+                List list = Arrays.asList(splitString);
+                Set<String> set = new LinkedHashSet<>(list);
+                for(String str : set) {
+                    if (str.length() < 3) {
+                        continue;
+                    }else if(commonWords.contains(str)){
+                        continue;
+                    }else {
                         count.add(Collections.frequency(list, str) + " = " + str);//counts number of occurrences
                     }
                     if(entry.getKey().toLowerCase().contains(str.toLowerCase())||str.contains("#")){//if word is also present in note title increase value
@@ -125,12 +216,6 @@ public class Search {
             }
 
             note.generateKeywords();
-        }
-
-        if (key.equalsIgnoreCase("d")) {
-            //report all notes organized by frequently used words
-            note.iterateMapSearch("");
-            note.generateKeywordsSorted();
         }
 
         if (key.equalsIgnoreCase("e")) {

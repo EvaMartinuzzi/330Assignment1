@@ -142,9 +142,4 @@ public class Note {
             keywords.clear();
         }
     }
-
-    public static void deleteCommonWords(String str) {
-        Set<String> commonWords = new HashSet<>(Arrays.asList("the", "and","that","have","for","not","with","this","but","from","will","would","there","their","what","out","about",
-                "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these"));
-    }
 }
