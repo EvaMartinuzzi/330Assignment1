@@ -1,20 +1,17 @@
-import com.sun.deploy.config.VerboseDefaultConfig;
-import com.sun.deploy.util.ArrayUtil;
-import sun.security.provider.certpath.Vertex;
-
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class Search {
     Main main = new Main();
     Note note = new Note();
+
     Scanner scanner = new Scanner(System.in);
     Vector<String> count = new Vector<>();
+    Queue<Integer> queue = new LinkedList<Integer>();
+
 
     //reads files into map
     public void setMap() throws IOException {
@@ -240,10 +237,24 @@ public class Search {
         }
 
         if (key.equalsIgnoreCase("f")) {
-                //topological sort
+            //topological sort
+            //represents references in .txt files
+            //sorted by how many in degrees a node has
+            //notes with most references get higher weights
+            //notes with no references to them have inDegree=0
+            //STEP 1: identify file with no references to them
+            //Step 2: If a file has no in or out degrees, display them first
+            //Step 3: then display a file with no in degrees but out degrees
+            //Step 4: delete this file
+            //Step 5: repeat 3 and 4 until all keys are listed
+
+            //if file A has ^B int it, then B has 1 indegree and A has 1 outdegree
+            //topological sort would be A, B
+            //FIFO?
+            TopoGraph graph = new TopoGraph(0);
+            graph.test();
 
         }
-
         System.out.println();
         main.options();
     }

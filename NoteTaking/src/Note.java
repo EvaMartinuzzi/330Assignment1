@@ -26,8 +26,6 @@ public class Note {
     public void getNotesFromFiles() throws IOException {//open files and read them
 
 
-        String[] fileNames= new String[filesForRead.size()];
-
         for (int i = 0; i<filesForRead.size();i++) {
             String fileName = filesForRead.get(i).getName();
             String filePath = filesForRead.get(i).getPath();
@@ -140,5 +138,37 @@ public class Note {
             System.out.println();
             keywords.clear();
         }
+    }
+
+    public int getInDegree() {
+        //if !word==^word, file with ! gets in++
+        int in = 0;
+        for(Map.Entry<String,String> entry : map.entrySet()) {
+            String value = entry.getValue();
+            String mentionedWord = "";
+            if (value.contains("!")) {
+                int prevIndex = value.indexOf("!") - 1;
+                int currentIndex = value.indexOf("!");
+                char currentChar = value.charAt(currentIndex);
+                while (currentChar != ' ' && currentChar != '\n') {//looks for end of word or end of line
+                    mentionedWord += value.charAt(currentIndex);
+                    currentIndex++;
+                    currentChar = value.charAt(currentIndex);
+                }
+            }
+            //check if this !word matches ^word in any other file
+        }
+        return in;
+    }
+
+    public int getOutDegree() {
+        int out = 0;
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            String value = entry.getValue();
+            if (value.contains("^")) {
+                out++;
+            }
+        }
+        return out;
     }
 }
