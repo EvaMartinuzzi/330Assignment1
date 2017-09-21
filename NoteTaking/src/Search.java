@@ -10,7 +10,6 @@ public class Search {
 
     Scanner scanner = new Scanner(System.in);
     Vector<String> count = new Vector<>();
-    Queue<Integer> queue = new LinkedList<Integer>();
 
 
     //reads files into map
@@ -25,7 +24,6 @@ public class Search {
             System.out.println("These files contain mentions: \n");
             note.iterateMapSearch("@");
             note.printFilesToPrint();
-            System.out.println();
         }
 
         if (key.equalsIgnoreCase("b")) {
@@ -33,7 +31,6 @@ public class Search {
             System.out.println("\nThese files contain mentions: \n");
             note.iterateMapSearch("@");
             note.printFilesToPrintSorted();
-            System.out.println();
         }
 
 
@@ -266,11 +263,9 @@ public class Search {
             //if file A has ^B in it, then B has 1 indegree and A has 1 outdegree
             //topological sort would be A, B
             //FIFO?
-            TopoGraph graph = new TopoGraph(0);
-            graph.test();
 
         }
         System.out.println();
-        //main.options();
+        main.options();
     }
 }

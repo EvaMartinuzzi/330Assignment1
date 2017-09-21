@@ -10,6 +10,8 @@ public class Note {
     Vector<String> keywords = new Vector<>();
     Map<String,String> map = new HashMap<>();
     Vector<String> mentionList = new Vector<>();
+    Map<String,Integer> inOut = new HashMap<>();
+
 
     public void readFiles(String path){
         /*stores file names in vector. Only allows for .txt files*/
@@ -42,10 +44,7 @@ public class Note {
             String fileContent = contents.toString();
 
             map.put(fileName,fileContent);
-
         }
-
-
     }
 
     public void iterateMapSearch(String searchValue){//goes through map with search value
@@ -138,37 +137,5 @@ public class Note {
             System.out.println();
             keywords.clear();
         }
-    }
-
-    public int getInDegree() {
-        //if !word==^word, file with ! gets in++
-        int in = 0;
-        for(Map.Entry<String,String> entry : map.entrySet()) {
-            String value = entry.getValue();
-            String mentionedWord = "";
-            if (value.contains("!")) {
-                int prevIndex = value.indexOf("!") - 1;
-                int currentIndex = value.indexOf("!");
-                char currentChar = value.charAt(currentIndex);
-                while (currentChar != ' ' && currentChar != '\n') {//looks for end of word or end of line
-                    mentionedWord += value.charAt(currentIndex);
-                    currentIndex++;
-                    currentChar = value.charAt(currentIndex);
-                }
-            }
-            //check if this !word matches ^word in any other file
-        }
-        return in;
-    }
-
-    public int getOutDegree() {
-        int out = 0;
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            String value = entry.getValue();
-            if (value.contains("^")) {
-                out++;
-            }
-        }
-        return out;
     }
 }
