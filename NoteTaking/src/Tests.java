@@ -1,18 +1,25 @@
+import static com.sun.jmx.snmp.ThreadContext.contains;
+import static javafx.beans.binding.Bindings.when;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class Tests {
     Search search = new Search();
     Note note = new Note();
+    Main main = new Main();
 
     @Test
     public void testOptionAOutput() throws IOException{
         //option A should have a .txt and @ output
         search.searchBy("a");
-
     }
 
     @Test
