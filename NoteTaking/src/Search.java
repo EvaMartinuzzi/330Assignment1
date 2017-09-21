@@ -46,7 +46,8 @@ public class Search {
                 String value = entry.getValue();
                 String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
                 Set<String> commonWords = new HashSet<>(Arrays.asList("the", "and","that","have","for","not","with","this","but","from","will","would","there","their","what","out","about",
-                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For", "Not"));
+                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For",
+                        "you","her","his","were", "Not","was","most","upon"));
 
                 List list = Arrays.asList(splitString);
                 Set<String> set = new LinkedHashSet<>(list);
@@ -99,6 +100,7 @@ public class Search {
                     }
                 }
                 Vector<String> noDuplicates = new Vector<>();
+                Vector<String> noCount = new Vector<>();
                 for(String str : sortedCount){//removes duplicates from sortedCount
                     if(noDuplicates.contains(str)){
                         continue;
@@ -106,14 +108,30 @@ public class Search {
                         noDuplicates.add(str);
                     }
                 }
+                for(String str: noDuplicates){//removes count for top words
+                    int i =0;
+                    String word = "";
+                    while(i<str.length()){//checks for digits/spaces/=
+                        if(Character.isDigit(str.charAt(i))||str.charAt(i)==' '||str.charAt(i)=='='){
+                            i++;
+                        }else {
+                            word += str.charAt(i);
+                            i++;
+                        }
+                    }
+                    if(noCount.size()<=10) {
+                        noCount.add(word);
+                    }
+                }
+                Collections.shuffle(noCount);
                 System.out.println("\n"+entry.getKey()+ ":");
 
                 int i = 0;
                 while( i <=10){//displays the top 10 words
-                    if(i >= noDuplicates.size()){
+                    if(i >= noCount.size()){
                         break;
                     }else {
-                        System.out.println(noDuplicates.get(i));
+                        System.out.println(noCount.get(i));
                         i++;
                     }
                 }
@@ -134,8 +152,8 @@ public class Search {
                 String value = entry.getValue();
                 String[] splitString = value.trim().split(",|\\.|\\?|:|\\s|!|;|—");//split with regex
                 Set<String> commonWords = new HashSet<>(Arrays.asList("the", "and","that","have","for","not","with","this","but","from","will","would","there","their","what","out","about",
-                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For", "Not"));
-
+                        "get","like","just","into","your","some","could","them","other","than","then","now","its","over","also","well","because","these", "The", "And", "That", "Have", "For",
+                        "you","her","his","were", "Not","was","most","upon"));
                 List list = Arrays.asList(splitString);
                 Set<String> set = new LinkedHashSet<>(list);
                 for(String str : set) {
@@ -219,7 +237,7 @@ public class Search {
             //report all notes that contain a searched frequently used word or @
             System.out.println("Please enter a person or keyword you would like to search for: ");
             String searchValue = scanner.nextLine();
-            Pattern p = Pattern.compile(searchValue, Pattern.CASE_INSENSITIVE);//search for value including mentions
+            Pattern p = Pattern.compile(searchValue, Pattern.CASE_INSENSITIVE);//search for value including mentions with regex
             for (Map.Entry<String, String> entry : note.map.entrySet()) {
                 String input = entry.getValue();
                 Matcher m = p.matcher(input);

@@ -18,8 +18,8 @@ public class Main {
         System.out.println("Please enter path to folder containing .txt files:");
         System.out.println("    Example: C:\\Users\\Name\\Documents\\NotesFolder");
         Scanner scanner = new Scanner(System.in);
-        path = scanner.nextLine();
-        //path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
+        //path = scanner.nextLine();
+        path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
         //C:\Users\Eva\IdeaProjects\330Assignment1\Too-Many-Cats
 
         System.out.println();
