@@ -271,6 +271,6 @@ public class Search {
 
         }
         System.out.println();
-        main.options();
+        //main.options();
     }
 }

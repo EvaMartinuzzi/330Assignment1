@@ -20,6 +20,15 @@ public class Tests {
     public void testOptionAOutput() throws IOException{
         //option A should have a .txt and @ output
         search.searchBy("a");
+        boolean bool;
+        for(String str :note.filesToPrint){
+            if(str.contains("@")&&str.contains(".txt")){
+                bool = true;
+            }else{
+                bool = false;
+            }
+            assertEquals(bool,true);
+        }
     }
 
     @Test
