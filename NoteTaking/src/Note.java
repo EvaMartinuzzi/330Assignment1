@@ -78,8 +78,7 @@ public class Note {
     }
     public void printFilesToPrint(){ //prints files containing mentions
         for(String key : filesToPrint){
-            System.out.println(key);
-        }
+               System.out.println(key);}
     }
 
     public void printFilesToPrintSorted(){ //prints files containing mentions in alphabetical order

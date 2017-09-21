@@ -222,24 +222,29 @@ public class Search {
             //report all notes that contain a searched frequently used word or @
             System.out.println("Please enter a person or keyword you would like to search for: ");
             String searchValue = scanner.nextLine();
-            Pattern p = Pattern.compile(searchValue,Pattern.CASE_INSENSITIVE);//search for value including mentions
-            for(Map.Entry<String,String> entry :note.map.entrySet()) {
+            Pattern p = Pattern.compile(searchValue, Pattern.CASE_INSENSITIVE);//search for value including mentions
+            for (Map.Entry<String, String> entry : note.map.entrySet()) {
                 String input = entry.getValue();
                 Matcher m = p.matcher(input);
-                if(m.find()){
+                if (m.find()) {
                     note.filesToPrint.add(entry.getKey());
                 }
             }
             note.printFilesToPrint();
             System.out.println();
+            System.out.println("Would you like to search for another term? Y/N ");
+            String searchAgain = scanner.nextLine();
+            searchAgain = searchAgain.toLowerCase();
+            if (searchAgain.equals("y")) { searchBy("e"); }
+            else { main.options(); }
         }
-
 
         if (key.equalsIgnoreCase("f")) {
                 //topological sort
-            System.out.println();
 
         }
+
+        System.out.println();
         main.options();
     }
 }
