@@ -7,11 +7,10 @@ public class Main {
     static String path;
 
     public static void main(String[] args) throws IOException {
-        List<String> keywordArray = new ArrayList<String>();
-        options(keywordArray);
+        options();
     }
 
-    public static void options(List<String> keywordArray) throws IOException {
+    public static void options() throws IOException {
         Note note = new Note();
         Search search = new Search();
 
@@ -21,6 +20,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         path = scanner.nextLine();
         //path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
+        //C:\Users\Eva\IdeaProjects\330Assignment1\Too-Many-Cats
 
         System.out.println();
         System.out.println("Please select how you want to view your notes: ");

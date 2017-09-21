@@ -36,7 +36,6 @@ public class Search {
             System.out.println("\nThese files contain mentions: \n");
             note.iterateMapSearch("@");
             note.printFilesToPrintSorted();
-            note.filesToPrint.clear();
             System.out.println();
         }
 
@@ -56,6 +55,7 @@ public class Search {
                     if(str.length()<3){
                         continue;
                     }else {
+                        Note.deleteCommonWords(str);
                         count.add(Collections.frequency(list, str) + " = " + str);//counts number of occurrences
                     }
                     if(entry.getKey().toLowerCase().contains(str.toLowerCase())||str.contains("#")){//if word is also present in note title increase value
@@ -155,5 +155,6 @@ public class Search {
             System.out.println();
 
         }
+        main.options();
     }
 }
