@@ -6,7 +6,7 @@ To run:
 
     Clone into IntelliJ (or other IDE) and click the Run button 
                              or     
-    type into terminal: javac Main.java;java Main.java  and hit enter
+    Type into terminal: javac Main.java;java Main.java  and hit enter
 
 Trello site used for tracking progres of tasks:
 https://trello.com/b/YNYWMGDx/330-assignment-1
