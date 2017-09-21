@@ -229,17 +229,22 @@ public class Search {
                 if(m.find()){
                     note.filesToPrint.add(entry.getKey());
                 }
+                else{
+                    System.out.println();
+                    System.out.println("Sorry, search produced no results");
+                    searchBy("e");
+                }
             }
             note.printFilesToPrint();
-            System.out.println();
         }
 
 
         if (key.equalsIgnoreCase("f")) {
                 //topological sort
-            System.out.println();
 
         }
+
+        System.out.println();
         main.options();
     }
 }
