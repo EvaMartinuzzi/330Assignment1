@@ -121,7 +121,23 @@ public class Note {
                 out++;
             }
             inOut.put(key, out);
+            //test that its working
             System.out.println(key+": "+out);
         }
     }
+    public void getIndegree() throws IOException{
+        for(Map.Entry<String,String> entry : map.entrySet()){
+            String value = entry.getValue();
+            String key = entry.getKey();
+            int in = 0;
+            if (value.contains("!")&&(value.indexOf("!")==0)){
+                in++;
+            }
+            inOut.put(key, in);
+            //test that its working
+            System.out.println("===========================================================");
+            System.out.println(key+": "+in);
+        }
+    }
+
 }

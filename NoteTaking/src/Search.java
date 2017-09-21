@@ -264,6 +264,7 @@ public class Search {
             //topological sort would be A, B
             //FIFO?
             note.getOutdegree();
+            note.getIndegree();
         }
         System.out.println();
         main.options();
