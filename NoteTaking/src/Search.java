@@ -263,7 +263,7 @@ public class Search {
             //if file A has ^B in it, then B has 1 indegree and A has 1 outdegree
             //topological sort would be A, B
             //FIFO?
-
+            note.getOutdegree();
         }
         System.out.println();
         main.options();

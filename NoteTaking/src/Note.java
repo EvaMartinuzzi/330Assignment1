@@ -1,3 +1,4 @@
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
@@ -108,34 +109,19 @@ public class Note {
             System.out.println();
             keywords.clear();
         }
+
     }
 
-    public void generateKeywordsSorted() throws IOException{ //generates a unique list of keywords for a file
-        //these are just a test
-
-        for(String key : filesToPrint) {
-            int totalWordCount = 0;
-            int threshold;
-            int wordAppearance = 0;
-            String word = "hello";
-
-            keywords.add("apple");
-            keywords.add("crab");
-            keywords.add("banana");
-
-            //words into a map:  key is word, value is wordAppearance
-            //get word count of file
-            //get appearance of each word
-
-//            threshold = (totalWordCount/4);
-//            if (wordAppearance>=threshold){
-//                keywords.add(word);
-//            }
-            java.util.Collections.sort(keywords, String.CASE_INSENSITIVE_ORDER);
-
-            System.out.println("FILE:   " + key + "     KEYWORDS:   " + keywords);
-            System.out.println();
-            keywords.clear();
+    public void getOutdegree() throws IOException{
+        for(Map.Entry<String,String> entry : map.entrySet()){
+            String value = entry.getValue();
+            String key = entry.getKey();
+            int out = 0;
+            if (value.contains("^")){
+                out++;
+            }
+            inOut.put(key, out);
+            System.out.println(key+": "+out);
         }
     }
 }
