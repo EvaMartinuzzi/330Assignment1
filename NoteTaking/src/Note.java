@@ -11,7 +11,9 @@ public class Note {
     Vector<String> keywords = new Vector<>();
     Map<String,String> map = new HashMap<>();
     Vector<String> mentionList = new Vector<>();
-    Map<String,Integer> inOut = new HashMap<>();
+    Map<String,Integer> outDegree = new HashMap<>();
+    Map<String,Integer> inDegree = new HashMap<>();
+
 
 
     public void readFiles(String path){
@@ -120,9 +122,8 @@ public class Note {
             if (value.contains("^")){
                 out++;
             }
-            inOut.put(key, out);
-            //test that its working
-            System.out.println(key+": "+out);
+            outDegree.put(key,out);
+            System.out.println(key + " has "+out+" out degree(s)");
         }
     }
     public void getIndegree() throws IOException{
@@ -133,11 +134,13 @@ public class Note {
             if (value.contains("!")&&(value.indexOf("!")==0)){
                 in++;
             }
-            inOut.put(key, in);
-            //test that its working
-            System.out.println("===========================================================");
-            System.out.println(key+": "+in);
+            inDegree.put(key, in);
+            System.out.println(key + " has "+in+" potential in degree(s)");
+
         }
+    }
+
+    public void topologicalSort() throws IOException{
     }
 
 }

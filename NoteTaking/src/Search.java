@@ -265,6 +265,7 @@ public class Search {
             //FIFO?
             note.getOutdegree();
             note.getIndegree();
+
         }
         System.out.println();
         main.options();

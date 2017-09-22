@@ -16,7 +16,7 @@ public class Main {
 
         /*Asks for path to folder that contains file*/
         System.out.println("Please enter path to folder containing .txt files:");
-        System.out.println("    Example: C:\\Users\\Name\\Documents\\NotesFolder");
+        System.out.println("    Example: C:\\Users\\USER\\IdeaProjects\\330Assignment1\\Too-Many-Cats");
         Scanner scanner = new Scanner(System.in);
         path = scanner.nextLine();
         //path = "C:\\Users\\pwnar\\IdeaProjects\\330Assignment1a\\Too-Many-Cats";
