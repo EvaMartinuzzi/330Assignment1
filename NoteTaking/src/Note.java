@@ -113,9 +113,20 @@ public class Note {
         }
 
     }
+    //notes with no references to them have inDegree&&outdegree=0
+    //STEP 1: identify file with no references to them
+    //Step 2: If a file has no in or out degrees, display them first
+    //Step 3: then display a file with no in degrees but out degrees
+    //Step 4: delete this file
+    //Step 5: repeat 3 and 4 until all keys are listed
+
+    //if file A has ^B in it, then B has 1 indegree and A has 1 outdegree
+    //topological sort would be A, B
+    //FIFO?
     
 
     public void topologicalSort() throws IOException{
+        int degree[]=new int[2];
         for(Map.Entry<String,String> entry : map.entrySet()) {
             String value = entry.getValue();
             String key = entry.getKey();
@@ -127,9 +138,15 @@ public class Note {
                 in++;
             }
             outDegree.put(key, out);
-            System.out.println(key + " has " + out + " out degree(s)");
             inDegree.put(key, in);
-            System.out.println(key + " has " + in + " potential in degree(s)");
+            degree[0]=out;
+            degree[1]=in;
+            int numDegrees=degree[0]+degree[1];
+            if (numDegrees==0){ printNotesWithNoReferences(key); }
         }
+    }
+
+    public void printNotesWithNoReferences(String key){
+        System.out.println(key);
     }
 }

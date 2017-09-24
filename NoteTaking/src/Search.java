@@ -253,18 +253,7 @@ public class Search {
         }
 
         if (key.equalsIgnoreCase("f")) {
-            //notes with no references to them have inDegree&&outdegree=0
-            //STEP 1: identify file with no references to them
-            //Step 2: If a file has no in or out degrees, display them first
-            //Step 3: then display a file with no in degrees but out degrees
-            //Step 4: delete this file
-            //Step 5: repeat 3 and 4 until all keys are listed
-
-            //if file A has ^B in it, then B has 1 indegree and A has 1 outdegree
-            //topological sort would be A, B
-            //FIFO?
             note.topologicalSort();
-
         }
         System.out.println();
         main.options();
