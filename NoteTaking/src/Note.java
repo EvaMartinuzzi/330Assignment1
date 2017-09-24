@@ -14,7 +14,7 @@ public class Note {
     Map<String,Integer> outDegree = new HashMap<>();
     Map<String,Integer> inDegree = new HashMap<>();
     Vector<String> keysNoReferences = new Vector<>();
-
+    Vector<String> keysOutReferences = new Vector<>();
 
 
     public void readFiles(String path){
@@ -115,9 +115,9 @@ public class Note {
 
     }
     //notes with no references to them have inDegree&&outdegree=0
-    //STEP 1: identify file with no references to them
-    //Step 2: If a file has no in or out degrees, display them first
-    //Step 3: then display a file with no in degrees but out degrees
+    //STEP 1: identify file with no references to them                  DONE
+    //Step 2: If a file has no in or out degrees, display them first    DONE
+    //Step 3: then display a file with no in degrees but out degrees    DONE
     //Step 4: delete this file
     //Step 5: repeat 3 and 4 until all keys are listed
 
@@ -144,16 +144,21 @@ public class Note {
             degree[1]=in;
             int numDegrees=degree[0]+degree[1];
             if (numDegrees==0){ printNotesWithNoReferences(key); }
+            if (degree[0]==1){ printNotesWithOutReferences(key); }
         }
         topologicalPrint();
     }
 
-    public void printNotesWithNoReferences(String key){
-        keysNoReferences.add(key);
-    }
+    public void printNotesWithNoReferences(String key){ keysNoReferences.add(key); }
+
+    public void printNotesWithOutReferences(String key){ keysOutReferences.add(key);}
 
     public void topologicalPrint(){
         for (String key : keysNoReferences){
+            System.out.println(key);
+        }
+        System.out.println("=====These files have refernces to other files=====");
+        for (String key : keysOutReferences){
             System.out.println(key);
         }
     }
