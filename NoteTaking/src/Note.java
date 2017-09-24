@@ -13,6 +13,7 @@ public class Note {
     Vector<String> mentionList = new Vector<>();
     Map<String,Integer> outDegree = new HashMap<>();
     Map<String,Integer> inDegree = new HashMap<>();
+    Vector<String> keysNoReferences = new Vector<>();
 
 
 
@@ -144,9 +145,16 @@ public class Note {
             int numDegrees=degree[0]+degree[1];
             if (numDegrees==0){ printNotesWithNoReferences(key); }
         }
+        topologicalPrint();
     }
 
     public void printNotesWithNoReferences(String key){
-        System.out.println(key);
+        keysNoReferences.add(key);
+    }
+
+    public void topologicalPrint(){
+        for (String key : keysNoReferences){
+            System.out.println(key);
+        }
     }
 }

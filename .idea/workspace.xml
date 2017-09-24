@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bd1e683c-3459-4012-ae38-158e5755ccea" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/330Assignment1/Note.class" afterPath="$PROJECT_DIR$/out/test/330Assignment1/Note.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NoteTaking/src/Note.java" afterPath="$PROJECT_DIR$/NoteTaking/src/Note.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NoteTaking/src/Search.java" afterPath="$PROJECT_DIR$/NoteTaking/src/Search.java" />
     </list>
     <ignored path="C:\Users\pwnar\IdeaProjects\330Assignment1a\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,9 +33,12 @@
       <file leaf-file-name="Note.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NoteTaking/src/Note.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="124" column="11" lean-forward="false" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="421">
+              <caret line="148" column="5" lean-forward="true" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
+              <folding>
+                <element signature="e#5464#5465#0" expanded="true" />
+                <element signature="e#5505#5506#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -484,7 +485,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44405000" />
+    <option name="totallyTimeSpent" value="45530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -642,7 +643,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding />
+          <folding>
+            <element signature="e#5464#5465#0" expanded="true" />
+            <element signature="e#5505#5506#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -932,9 +936,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NoteTaking/src/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="124" column="11" lean-forward="false" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="421">
+          <caret line="148" column="5" lean-forward="true" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
+          <folding>
+            <element signature="e#5464#5465#0" expanded="true" />
+            <element signature="e#5505#5506#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
