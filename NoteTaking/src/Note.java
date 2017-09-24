@@ -113,34 +113,23 @@ public class Note {
         }
 
     }
+    
 
-    public void getOutdegree() throws IOException{
-        for(Map.Entry<String,String> entry : map.entrySet()){
-            String value = entry.getValue();
-            String key = entry.getKey();
-            int out = 0;
-            if (value.contains("^")){
-                out++;
-            }
-            outDegree.put(key,out);
-            System.out.println(key + " has "+out+" out degree(s)");
-        }
-    }
-    public void getIndegree() throws IOException{
-        for(Map.Entry<String,String> entry : map.entrySet()){
+    public void topologicalSort() throws IOException{
+        for(Map.Entry<String,String> entry : map.entrySet()) {
             String value = entry.getValue();
             String key = entry.getKey();
             int in = 0;
-            if (value.contains("!")&&(value.indexOf("!")==0)){
+            int out = 0;
+            if (value.contains("^")) {
+                out++;
+            } else if (value.contains("!") && (value.indexOf("!") == 0)) {
                 in++;
             }
+            outDegree.put(key, out);
+            System.out.println(key + " has " + out + " out degree(s)");
             inDegree.put(key, in);
-            System.out.println(key + " has "+in+" potential in degree(s)");
-
+            System.out.println(key + " has " + in + " potential in degree(s)");
         }
     }
-
-    public void topologicalSort() throws IOException{
-    }
-
 }
