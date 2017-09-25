@@ -15,6 +15,8 @@ public class Note {
     Map<String,Integer> inDegree = new HashMap<>();
     Vector<String> keysNoReferences = new Vector<>();
     Vector<String> keysOutReferences = new Vector<>();
+    Vector<String> keysReferenced = new Vector<>();
+
 
 
     public void readFiles(String path){
@@ -143,22 +145,21 @@ public class Note {
             degree[0]=out;
             degree[1]=in;
             int numDegrees=degree[0]+degree[1];
-            if (numDegrees==0){ printNotesWithNoReferences(key); }
-            if (degree[0]==1){ printNotesWithOutReferences(key); }
+            if (numDegrees==0){ keysNoReferences.add(key); }
+            else if (degree[0]==1){ if (degree[1]==0){keysOutReferences.add(key); }}
+            else {keysReferenced.add(key);}
         }
         topologicalPrint();
     }
-
-    public void printNotesWithNoReferences(String key){ keysNoReferences.add(key); }
-
-    public void printNotesWithOutReferences(String key){ keysOutReferences.add(key);}
 
     public void topologicalPrint(){
         for (String key : keysNoReferences){
             System.out.println(key);
         }
-        System.out.println("=====These files have refernces to other files=====");
         for (String key : keysOutReferences){
+            System.out.println(key);
+        }
+        for (String key : keysReferenced){
             System.out.println(key);
         }
     }
